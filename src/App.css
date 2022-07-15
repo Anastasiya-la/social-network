@@ -6,22 +6,8 @@
 }
 
 
-.nav {
-    grid-area: n;
-    background-color: darkcyan;
-}
 
-.header {
-    grid-area: h;
-    background-color: peachpuff;
-}
 
-.content {
-    grid-area: c;
-    background-color: cadetblue;
-}
 
-.header img {
-    width: 50px
-}
+
 
