@@ -1,0 +1,12 @@
+.icon {
+    font-size: 20px;
+    fill: #838da8;
+}
+
+.icon.active {
+    fill: #8224e3;
+}
+
+.icon:hover {
+    fill: #8224e3;
+}

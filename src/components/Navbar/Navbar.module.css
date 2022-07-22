@@ -1,12 +1,23 @@
+
 .nav {
     grid-area: n;
-    background-color: darkcyan;
+    background-color: #fff;
 }
 
 .item {
-    color: white;
+    color: #838daa;
 }
 
 .item.active {
-    color: gold;
+    color: #8224e3;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.item:hover {
+    color: #8224e3;
 }
