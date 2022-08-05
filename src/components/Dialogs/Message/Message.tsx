@@ -2,7 +2,8 @@ import s from './../Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 
-type MessageType = {
+export type MessageType = {
+    id: number
     message: string
 }
 

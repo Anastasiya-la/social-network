@@ -1,7 +1,7 @@
 import s from "./Icon.module.css";
 import React from "react";
 
-type IconType = {
+export type IconType = {
     version: string
     width: string
     height: string
