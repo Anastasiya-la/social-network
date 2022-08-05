@@ -3,6 +3,13 @@ import React from "react";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+    let postsData = [
+        {id: 1, message: 'Hi, how are you?', likeCount: 2},
+        {id: 2, message: "It's my first post", likeCount: 10}
+    ]
+
+
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -14,8 +21,8 @@ const MyPosts = () => {
             </div>
             <div>New post</div>
             <div className={s.posts}>
-                <Post message={'Hi, how are you?'} likeCount={2}/>
-                <Post message={"It's my first post"} likeCount={10}/>
+                <Post message={postsData[0].message} likeCount={postsData[0].likeCount}/>
+                <Post message={postsData[1].message} likeCount={postsData[1].likeCount}/>
             </div>
         </div>
     )
