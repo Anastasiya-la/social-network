@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {stateType} from "./redux/state";
+import Friends from "./components/Friends/Friends";
 
 
 type PropsType = {
@@ -30,6 +31,7 @@ function App(props: PropsType) {
                         <Route path={'/news'} element={<News/>}/>
                         <Route path={'/music'} element={<Music/>}/>
                         <Route path={'/settings'} element={<Settings/>}/>
+                        <Route path={'/friends'} element={<Friends/>}/>
                     </Routes>
                 </div>
             </div>

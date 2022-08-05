@@ -1,17 +1,13 @@
 import React from "react";
 import s from './Navbar.module.css';
-import Icon, {IconType} from "./Icon/Icon";
+import Icon from "./Icon/Icon";
 import {NavLink} from "react-router-dom";
 import {sidebarType} from "../../redux/state";
 
 type NavbarPropsType = {
     state: sidebarType
 }
-export type NavLinkType = {
-    to: string
-    name: string
-    icon: IconType
-}
+
 
 const Navbar = (props: NavbarPropsType) => {
 

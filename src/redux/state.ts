@@ -1,14 +1,33 @@
-import {PostType} from "../components/Profile/MyPosts/Post/Post";
-import {DialogItemType} from "../components/Dialogs/DialogItem/DialogItem";
-import {MessageType} from "../components/Dialogs/Message/Message";
-import {NavLinkType} from "../components/Navbar/Navbar";
-
-
+type DialogType = {
+    name: string
+    id: number
+}
+type MessageType = {
+    id: number
+    message: string
+}
+type IconType = {
+    version: string
+    width: string
+    height: string
+    viewBox: string
+    path: string
+}
+type PostType = {
+    id: number
+    message: string
+    likeCount: number
+}
+type NavLinkType = {
+    to: string
+    name: string
+    icon: IconType
+}
 export type profilePageType = {
     posts: Array<PostType>
 }
 export type dialogsPageType = {
-    dialogs: Array<DialogItemType>
+    dialogs: Array<DialogType>
     messages: Array<MessageType>
 }
 export type sidebarType = {
