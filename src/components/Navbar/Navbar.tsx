@@ -2,9 +2,10 @@ import React from "react";
 import s from './Navbar.module.css';
 import Icon, {IconType} from "./Icon/Icon";
 import {NavLink} from "react-router-dom";
+import {sidebarType} from "../../redux/state";
 
 type NavbarPropsType = {
-    links: Array<NavLinkType>
+    state: sidebarType
 }
 export type NavLinkType = {
     to: string
@@ -14,7 +15,7 @@ export type NavLinkType = {
 
 const Navbar = (props: NavbarPropsType) => {
 
-    let linksElements = props.links.map(n => <li className={`${s.item} ${s.hover}`}>
+    let linksElements = props.state.navLinks.map(n => <li className={`${s.item} ${s.hover}`}>
         <NavLink to={n.to} className={({isActive}) => isActive ? s.active : undefined}>
             <Icon version={n.icon.version} width={n.icon.width} height={n.icon.height}
                   viewBox={n.icon.viewBox}
