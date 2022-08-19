@@ -1,4 +1,5 @@
 import s from './../Dialogs.module.css';
+import {createRef} from "react";
 
 
 export type MessageType = {
@@ -7,7 +8,19 @@ export type MessageType = {
 }
 
 const Message = (props: MessageType) => {
-    return <div className={s.message}>{props.message}</div>
+    const addMessage = () => {
+        alert(newMessageElement.current?.value)
+    }
+    const newMessageElement = createRef<HTMLTextAreaElement>();
+
+    return <>
+        <div className={s.message}>{props.message}</div>
+        <div className={s.addMessage}>
+            <textarea ref={newMessageElement}></textarea>
+            <button onClick={addMessage}>Add</button>
+        </div>
+
+    </>
 
 }
 

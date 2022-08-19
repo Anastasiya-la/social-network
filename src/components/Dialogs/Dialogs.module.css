@@ -19,3 +19,6 @@
 
 }
 
+.addMessage {
+    display: flex;
+}
