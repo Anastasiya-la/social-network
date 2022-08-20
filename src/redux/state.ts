@@ -1,3 +1,5 @@
+import {rerenderAllTree} from "../render";
+
 type DialogType = {
     name: string
     id: number
@@ -46,7 +48,7 @@ let state = {
         posts: [
             {id: 1, message: 'Hi, how are you?', likeCount: 2},
             {id: 2, message: "It's my first post", likeCount: 10},
-            {id: 3, message: "It's my first post", likeCount: 11},
+            {id: 3, message: "Blalaal", likeCount: 11},
         ]
     },
 
@@ -142,7 +144,8 @@ let state = {
 
 export const addPost = (postMessage: string) => {
     const newPost = {id: 4, message: postMessage, likeCount: 0};
-    state.profilePage.posts.push(newPost)
+    state.profilePage.posts.push(newPost);
+    rerenderAllTree(state)
 
 }
 
