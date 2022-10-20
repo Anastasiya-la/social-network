@@ -8,13 +8,16 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {stateType} from "./redux/state";
+import {stateType, updateNewPostText} from "./redux/state";
 import Friends from "./components/Friends/Friends";
 
 
 type PropsType = {
     state: stateType
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+    addMessage: () => void
+    updateNewMessageText: (newTextMessage: string) => void
 }
 
 
@@ -26,9 +29,11 @@ function App(props: PropsType) {
                 <Navbar state={props.state.sidebar}/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path={'/profile'} element={<Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                        <Route path={'/profile'}
+                               element={<Profile ProfilePage={props.state.profilePage} addPost={props.addPost}
+                                                 updateNewPostText={props.updateNewPostText}/>}/>
                         <Route path={'/dialogs/*'}
-                               element={<Dialogs state={props.state.dialogsPage}/>}/>
+                               element={<Dialogs state={props.state.dialogsPage} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>}/>
                         <Route path={'/news'} element={<News/>}/>
                         <Route path={'/music'} element={<Music/>}/>
                         <Route path={'/settings'} element={<Settings/>}/>

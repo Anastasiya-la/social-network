@@ -27,10 +27,12 @@ type NavLinkType = {
 }
 export type profilePageType = {
     posts: Array<PostType>
+    newPostText: string
 }
 export type dialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
+    newMessageText: string
 }
 export type sidebarType = {
     navLinks: Array<NavLinkType>
@@ -49,7 +51,8 @@ let state = {
             {id: 1, message: 'Hi, how are you?', likeCount: 2},
             {id: 2, message: "It's my first post", likeCount: 10},
             {id: 3, message: "Blalaal", likeCount: 11},
-        ]
+        ],
+        newPostText: ''
     },
 
     dialogsPage: {
@@ -67,7 +70,8 @@ let state = {
             {id: 3, message: 'Yo'},
             {id: 4, message: 'Yo'},
             {id: 5, message: 'Yo'}
-        ]
+        ],
+        newMessageText: 'fgfgfgf'
     },
 
     sidebar: {
@@ -142,11 +146,28 @@ let state = {
 }
 
 
-export const addPost = (postMessage: string) => {
-    const newPost = {id: 4, message: postMessage, likeCount: 0};
+export const addPost = () => {
+    const newPost = {id: 4, message: state.profilePage.newPostText, likeCount: 0};
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     rerenderAllTree(state)
 
+}
+
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText;
+    rerenderAllTree(state);
+}
+
+export const addMessage = () => {
+    const newMessage = {id: 5, message: state.dialogsPage.newMessageText}
+    state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText = '';
+    rerenderAllTree(state);
+}
+export const updateNewMessageText = (newText: string) => {
+    state.dialogsPage.newMessageText = newText;
+    rerenderAllTree(state);
 }
 
 export default state;
