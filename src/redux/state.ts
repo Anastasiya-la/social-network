@@ -1,4 +1,6 @@
-import {rerenderAllTree} from "../render";
+let rerenderAllTree = () => {
+    console.log('state was changed')
+}
 
 type DialogType = {
     name: string
@@ -150,24 +152,28 @@ export const addPost = () => {
     const newPost = {id: 4, message: state.profilePage.newPostText, likeCount: 0};
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
-    rerenderAllTree(state)
+    rerenderAllTree()
 
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText;
-    rerenderAllTree(state);
+    rerenderAllTree();
 }
 
 export const addMessage = () => {
     const newMessage = {id: 5, message: state.dialogsPage.newMessageText}
     state.dialogsPage.messages.push(newMessage)
     state.dialogsPage.newMessageText = '';
-    rerenderAllTree(state);
+    rerenderAllTree();
 }
 export const updateNewMessageText = (newText: string) => {
     state.dialogsPage.newMessageText = newText;
-    rerenderAllTree(state);
+    rerenderAllTree();
+}
+
+export const subscribe = (observer: () => void) => {
+    rerenderAllTree = observer;
 }
 
 export default state;
