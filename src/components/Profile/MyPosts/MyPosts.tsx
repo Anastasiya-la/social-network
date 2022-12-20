@@ -13,7 +13,7 @@ const MyPosts = (props: MyPostsPropsType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
     const addPost = () => {
         if (newPostElement.current) {
-            props.addPost();
+          props.addPost();
         }
 
     }

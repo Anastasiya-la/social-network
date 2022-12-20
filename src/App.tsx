@@ -8,16 +8,13 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {stateType, updateNewPostText} from "./redux/state";
+import {stateType, storeType} from "./redux/state";
 import Friends from "./components/Friends/Friends";
 
 
 type PropsType = {
     state: stateType
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
-    addMessage: () => void
-    updateNewMessageText: (newTextMessage: string) => void
+    store: storeType
 }
 
 
@@ -30,10 +27,13 @@ function App(props: PropsType) {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path={'/profile'}
-                               element={<Profile ProfilePage={props.state.profilePage} addPost={props.addPost}
-                                                 updateNewPostText={props.updateNewPostText}/>}/>
+                               element={<Profile ProfilePage={props.state.profilePage}
+                                                 addPost={props.store.addPost.bind(props.store)}
+                                                 updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
                         <Route path={'/dialogs/*'}
-                               element={<Dialogs state={props.state.dialogsPage} addMessage={props.addMessage} updateNewMessageText={props.updateNewMessageText}/>}/>
+                               element={<Dialogs state={props.state.dialogsPage}
+                                                 addMessage={props.store.addMessage.bind(props.store)}
+                                                 updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}/>}/>
                         <Route path={'/news'} element={<News/>}/>
                         <Route path={'/music'} element={<Music/>}/>
                         <Route path={'/settings'} element={<Settings/>}/>
