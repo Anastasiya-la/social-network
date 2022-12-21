@@ -23,6 +23,22 @@ type NavLinkType = {
     name: string
     icon: IconType
 }
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType;
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+}
+type UpdateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+type AddMessageActionType = {
+    type: 'ADD-MESSAGE'
+}
+type UpdateNewMessageTextActionType = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    newText: string
+}
 export type profilePageType = {
     posts: Array<PostType>
     newPostText: string
@@ -49,6 +65,7 @@ export type storeType = {
     updateNewPostText: (newText: string) => void
     addMessage: () => void
     updateNewMessageText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 
 }
 
@@ -155,12 +172,14 @@ export let store: storeType = {
         },
 
     },
+
     getState() {
         return this._state
     },
     subscribe(observer: () => void) {
         this._rerenderAllTree = observer;
     },
+
     addPost() {
         const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
         this._state.profilePage.posts.push(newPost);
@@ -180,6 +199,25 @@ export let store: storeType = {
     updateNewMessageText(newText: string) {
         this._state.dialogsPage.newMessageText = newText;
         this._rerenderAllTree()
+    },
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._rerenderAllTree()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._rerenderAllTree()
+        } else if (action.type === 'ADD-MESSAGE') {
+            const newMessage = {id: 5, message: this._state.dialogsPage.newMessageText}
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = '';
+            this._rerenderAllTree()
+        } else if ('UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newText;
+            this._rerenderAllTree()
+        }
     }
 }
 

@@ -1,18 +1,20 @@
 import s from './../Dialogs.module.css';
 import {createRef} from "react";
+import {ActionsTypes} from "../../../redux/state";
 
 
 export type MessageType = {
     id: number
     message: string
-    addMessage: () => void
     newMessageText: string
-    updateNewMessageText: (newTextMessage: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 const Message = (props: MessageType) => {
     const addMessage = () => {
-        if(newMessageElement.current){alert(newMessageElement.current.value);}
+        if (newMessageElement.current) {
+            alert(newMessageElement.current.value);
+        }
 
 
     }
@@ -20,7 +22,8 @@ const Message = (props: MessageType) => {
     const onNewMessageTextChange = () => {
         if (newMessageElement.current) {
             let newText = newMessageElement.current.value
-            props.updateNewMessageText(newText);
+            let action: ActionsTypes = {type: 'UPDATE-NEW-MESSAGE-TEXT', newText: newText}
+            props.dispatch(action);
         }
 
     }
