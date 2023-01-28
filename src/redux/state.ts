@@ -23,22 +23,27 @@ type NavLinkType = {
     name: string
     icon: IconType
 }
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType;
 
-type AddPostActionType = {
+export type ActionsTypes =
+    AddPostActionType
+    | UpdateNewPostTextActionType
+    | AddMessageActionType
+    | UpdateNewMessageTextActionType;
+export type AddPostActionType = {
     type: 'ADD-POST'
 }
-type UpdateNewPostTextActionType = {
+export type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
-type AddMessageActionType = {
+export type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
 type UpdateNewMessageTextActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT'
     newText: string
 }
+
 export type profilePageType = {
     posts: Array<PostType>
     newPostText: string
@@ -61,13 +66,18 @@ export type storeType = {
     _state: stateType
     getState: () => stateType
     subscribe: (observer: () => void) => void
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
-    addMessage: () => void
-    updateNewMessageText: (newText: string) => void
+    /* addPost: () => void
+     updateNewPostText: (newText: string) => void
+     addMessage: () => void
+     updateNewMessageText: (newText: string) => void*/
     dispatch: (action: ActionsTypes) => void
 
 }
+export const addPostActionCreator = (): AddPostActionType => ({type: 'ADD-POST'})
+export const updateNewPostTextActionCreator = (newText: string): UpdateNewPostTextActionType => ({
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: newText
+})
 
 export let store: storeType = {
     _rerenderAllTree() {
@@ -180,26 +190,26 @@ export let store: storeType = {
         this._rerenderAllTree = observer;
     },
 
-    addPost() {
-        const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._rerenderAllTree()
-    },
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._rerenderAllTree()
-    },
-    addMessage() {
-        const newMessage = {id: 5, message: this._state.dialogsPage.newMessageText}
-        this._state.dialogsPage.messages.push(newMessage)
-        this._state.dialogsPage.newMessageText = '';
-        this._rerenderAllTree()
-    },
-    updateNewMessageText(newText: string) {
-        this._state.dialogsPage.newMessageText = newText;
-        this._rerenderAllTree()
-    },
+    /* addPost() {
+         const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
+         this._state.profilePage.posts.push(newPost);
+         this._state.profilePage.newPostText = '';
+         this._rerenderAllTree()
+     },
+     updateNewPostText(newText: string) {
+         this._state.profilePage.newPostText = newText;
+         this._rerenderAllTree()
+     },
+     addMessage() {
+         const newMessage = {id: 5, message: this._state.dialogsPage.newMessageText}
+         this._state.dialogsPage.messages.push(newMessage)
+         this._state.dialogsPage.newMessageText = '';
+         this._rerenderAllTree()
+     },
+     updateNewMessageText(newText: string) {
+         this._state.dialogsPage.newMessageText = newText;
+         this._rerenderAllTree()
+     },*/
     dispatch(action) {
         if (action.type === 'ADD-POST') {
             const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
@@ -218,7 +228,8 @@ export let store: storeType = {
             this._state.dialogsPage.newMessageText = action.newText;
             this._rerenderAllTree()
         }
-    }
+    },
+
 }
 
 
