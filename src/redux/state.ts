@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
+
+
 type DialogType = {
     name: string
     id: number
@@ -73,9 +79,16 @@ export type storeType = {
     dispatch: (action: ActionsTypes) => void
 
 }
-export const addPostActionCreator = (): AddPostActionType => ({type: 'ADD-POST'})
+
+export const addPostActionCreator = (): AddPostActionType => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (newText: string): UpdateNewPostTextActionType => ({
-    type: 'UPDATE-NEW-POST-TEXT',
+    type: UPDATE_NEW_POST_TEXT,
+    newText: newText
+})
+
+export const addMessageActionCreator = (): AddMessageActionType => ({type: ADD_MESSAGE})
+export const updateNewMessageTextActionCreator = (newText: string): UpdateNewMessageTextActionType => ({
+    type: UPDATE_NEW_MESSAGE_TEXT,
     newText: newText
 })
 
@@ -109,7 +122,7 @@ export let store: storeType = {
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'Yo'}
             ],
-            newMessageText: 'fgfgfgf'
+            newMessageText: ''
         },
 
         sidebar: {
@@ -189,7 +202,25 @@ export let store: storeType = {
     subscribe(observer: () => void) {
         this._rerenderAllTree = observer;
     },
-
+    dispatch(action) {
+        if (action.type === ADD_POST) {
+            const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._rerenderAllTree()
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profilePage.newPostText = action.newText;
+            this._rerenderAllTree()
+        } else if (action.type === ADD_MESSAGE) {
+            const newMessage = {id: 5, message: this._state.dialogsPage.newMessageText}
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = '';
+            this._rerenderAllTree()
+        } else if (UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.newText;
+            this._rerenderAllTree()
+        }
+    },
     /* addPost() {
          const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
          this._state.profilePage.posts.push(newPost);
@@ -210,25 +241,7 @@ export let store: storeType = {
          this._state.dialogsPage.newMessageText = newText;
          this._rerenderAllTree()
      },*/
-    dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost = {id: 4, message: this._state.profilePage.newPostText, likeCount: 0};
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._rerenderAllTree()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._rerenderAllTree()
-        } else if (action.type === 'ADD-MESSAGE') {
-            const newMessage = {id: 5, message: this._state.dialogsPage.newMessageText}
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state.dialogsPage.newMessageText = '';
-            this._rerenderAllTree()
-        } else if ('UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._rerenderAllTree()
-        }
-    },
+
 
 }
 

@@ -20,26 +20,24 @@ type PropsType = {
 
 function App(props: PropsType) {
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar state={props.state.sidebar}/>
-                <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path={'/profile'}
-                               element={<Profile state={props.state.profilePage}
-                                                 dispatch={props.store.dispatch.bind(props.store)}/>}/>
-                        <Route path={'/dialogs/*'}
-                               element={<Dialogs state={props.state.dialogsPage}
-                                                 dispatch={props.store.dispatch.bind(props.store)}/>}/>
-                        <Route path={'/news'} element={<News/>}/>
-                        <Route path={'/music'} element={<Music/>}/>
-                        <Route path={'/settings'} element={<Settings/>}/>
-                        <Route path={'/friends'} element={<Friends/>}/>
-                    </Routes>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar state={props.state.sidebar}/>
+            <div className='app-wrapper-content'>
+                <Routes>
+                    <Route path={'/profile'}
+                           element={<Profile state={props.state.profilePage}
+                                             dispatch={props.store.dispatch.bind(props.store)}/>}/>
+                    <Route path={'/dialogs/*'}
+                           element={<Dialogs state={props.state.dialogsPage}
+                                             dispatch={props.store.dispatch.bind(props.store)}/>}/>
+                    <Route path={'/news'} element={<News/>}/>
+                    <Route path={'/music'} element={<Music/>}/>
+                    <Route path={'/settings'} element={<Settings/>}/>
+                    <Route path={'/friends'} element={<Friends/>}/>
+                </Routes>
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 
