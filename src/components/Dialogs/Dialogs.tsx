@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 import {
     ActionsTypes,
     dialogsPageType
-} from "../../redux/state";
+} from "../../redux/store";
 import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer"
 import {ChangeEvent} from "react";
 

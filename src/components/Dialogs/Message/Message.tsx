@@ -1,6 +1,6 @@
 import s from './../Dialogs.module.css';
 import {createRef} from "react";
-import {ActionsTypes} from "../../../redux/state";
+import {ActionsTypes} from "../../../redux/store";
 
 
 export type MessageType = {

@@ -3,7 +3,7 @@ import React from "react";
 import Post, {PostType} from "./Post/Post";
 import {
     ActionsTypes
-} from "../../../redux/state";
+} from "../../../redux/store";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
