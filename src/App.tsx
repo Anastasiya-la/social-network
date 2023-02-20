@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {ActionsTypes, stateType, storeType} from "./redux/store";
 import Friends from "./components/Friends/Friends";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
 type PropsType = {
@@ -29,7 +30,7 @@ function App(props: PropsType) {
                            element={<Profile state={props.state.profilePage}
                                              dispatch={props.dispatch}/>}/>
                     <Route path={'/dialogs/*'}
-                           element={<Dialogs state={props.state.dialogsPage}
+                           element={<DialogsContainer state={props.state.dialogsPage}
                                              dispatch={props.dispatch}/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
