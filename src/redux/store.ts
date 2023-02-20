@@ -1,5 +1,5 @@
-import {profileReducer} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
+import {ADD_POST, profileReducer, UPDATE_NEW_POST_TEXT} from "./profile-reducer";
+import {ADD_MESSAGE, dialogsReducer, UPDATE_NEW_MESSAGE_TEXT} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
 type DialogType = {
@@ -34,17 +34,17 @@ export type ActionsTypes =
     | AddMessageActionType
     | UpdateNewMessageTextActionType;
 export type AddPostActionType = {
-    type: 'ADD-POST'
+    type: typeof ADD_POST
 }
 export type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
+    type: typeof UPDATE_NEW_POST_TEXT
     newText: string
 }
 export type AddMessageActionType = {
-    type: 'ADD-MESSAGE'
+    type: typeof ADD_MESSAGE
 }
 export type UpdateNewMessageTextActionType = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    type: typeof UPDATE_NEW_MESSAGE_TEXT
     newText: string
 }
 
@@ -63,7 +63,7 @@ export type sidebarType = {
 export type stateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
-    sidebar: sidebarType
+    sideBar: sidebarType
 }
 export type storeType = {
     _rerenderAllTree: () => void
@@ -107,7 +107,7 @@ export let store: storeType = {
             newMessageText: ''
         },
 
-        sidebar: {
+        sideBar: {
             navLinks: [
                 {
                     to: '/profile',
@@ -187,7 +187,7 @@ export let store: storeType = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        this._state.sideBar = sidebarReducer(this._state.sideBar, action)
         this._rerenderAllTree();
     },
 }

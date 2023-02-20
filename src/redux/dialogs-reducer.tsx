@@ -1,7 +1,7 @@
 import {ActionsTypes, AddMessageActionType, dialogsPageType, UpdateNewMessageTextActionType} from "./store";
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+export const ADD_MESSAGE = 'ADD-MESSAGE';
+export const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState: dialogsPageType = {
     dialogs: [
