@@ -48,16 +48,16 @@ export type UpdateNewMessageTextActionType = {
     newText: string
 }
 
-export type profilePageType = {
+ type profilePageType = {
     posts: Array<PostType>
     newPostText: string
 }
-export type dialogsPageType = {
+type dialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageText: string
 }
-export type sidebarType = {
+ type sidebarType = {
     navLinks: Array<NavLinkType>
 }
 export type stateType = {
@@ -74,7 +74,7 @@ export type storeType = {
 
 }
 
-export let store: storeType = {
+/*export let store: storeType = {
     _rerenderAllTree() {
         console.log('no subscribers(observers)')
     },
@@ -190,6 +190,6 @@ export let store: storeType = {
         this._state.sideBar = sidebarReducer(this._state.sideBar, action)
         this._rerenderAllTree();
     },
-}
+}*/
 
-export default store;
+

@@ -2,16 +2,12 @@ import React from "react";
 import s from './Navbar.module.css';
 import Icon from "./Icon/Icon";
 import {NavLink} from "react-router-dom";
-import {sidebarType} from "../../redux/store";
-
-type NavbarPropsType = {
-    state: sidebarType
-}
+import {NavbarPropsType} from "./NavbarContainer";
 
 
 const Navbar = (props: NavbarPropsType) => {
 
-    let linksElements = props.state.navLinks.map(n => <li className={`${s.item} ${s.hover}`}>
+    let linksElements = props.sideBar.navLinks.map(n => <li className={`${s.item} ${s.hover}`}>
         <NavLink to={n.to} className={({isActive}) => isActive ? s.active : undefined}>
             <Icon version={n.icon.version} width={n.icon.width} height={n.icon.height}
                   viewBox={n.icon.viewBox}

@@ -1,37 +1,29 @@
 import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {ActionsTypes, stateType, storeType} from "./redux/store";
 import Friends from "./components/Friends/Friends";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 
 
-type PropsType = {
-    state: stateType
-    dispatch: (action: ActionsTypes) => void
-}
 
 
-function App(props: PropsType) {
+function App() {
     return (
         <div className='app-wrapper'>
             <Header/>
-            <Navbar state={props.state.sideBar}/>
+            <NavbarContainer/>
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route path={'/profile'}
-                           element={<Profile state={props.state.profilePage}
-                                             dispatch={props.dispatch}/>}/>
+                           element={<Profile/>}/>
                     <Route path={'/dialogs/*'}
-                           element={<DialogsContainer state={props.state.dialogsPage}
-                                             dispatch={props.dispatch}/>}/>
+                           element={<DialogsContainer/>}/>
                     <Route path={'/news'} element={<News/>}/>
                     <Route path={'/music'} element={<Music/>}/>
                     <Route path={'/settings'} element={<Settings/>}/>

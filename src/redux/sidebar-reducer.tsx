@@ -1,4 +1,21 @@
-import {ActionsTypes, sidebarType} from "./store";
+import {ActionsTypes} from "./store";
+
+type NavLinkType = {
+    to: string
+    name: string
+    icon: IconType
+}
+type IconType = {
+    version: string
+    width: string
+    height: string
+    viewBox: string
+    path: string
+}
+
+export type sidebarType = {
+    navLinks: Array<NavLinkType>
+}
 
 let initialState: sidebarType = {
     navLinks: [
