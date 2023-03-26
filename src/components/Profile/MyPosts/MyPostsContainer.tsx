@@ -4,10 +4,12 @@ import {Dispatch} from "redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import MyPosts from "./MyPosts";
+import {PostType} from "./Post/Post";
 
 
 type mapStateType = {
-    profilePage: profilePageType
+    posts: Array<PostType>,
+    newPostText: string
 }
 
 type mapDispatchType = {
@@ -19,7 +21,8 @@ export type MyPostsPropsType = mapStateType & mapDispatchType;
 
 const mapStateToProps = (state: AppStateType): mapStateType => {
     return {
-        profilePage: state.profilePage
+        posts: state.profilePage.posts,
+        newPostText: state.profilePage.newPostText
     }
 
 }

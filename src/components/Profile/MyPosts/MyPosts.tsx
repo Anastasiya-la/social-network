@@ -13,7 +13,7 @@ const MyPosts = (props: MyPostsPropsType) => {
 
     }
 
-    let postsElements = props.profilePage.posts.map(p => <Post id={p.id} message={p.message} likeCount={p.likeCount}/>);
+    let postsElements = props.posts.map(p => <Post id={p.id} message={p.message} likeCount={p.likeCount}/>);
     let onPostChange = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
@@ -26,7 +26,7 @@ const MyPosts = (props: MyPostsPropsType) => {
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
-                <div><textarea ref={newPostElement} value={props.profilePage.newPostText} onChange={onPostChange}></textarea></div>
+                <div><textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}></textarea></div>
                 <div>
                     <button onClick={addPost}>Add post</button>
                 </div>
