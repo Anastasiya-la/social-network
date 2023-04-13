@@ -4,14 +4,19 @@ const SET_USERS = 'SET-USERS';
 
 export type UserType = {
     id: number
-    photoUrl: string
-    followed: boolean
-    fullName: string
+    name: string
     status: string
-    location: {
-        country: string
-        city: string
+    photos: {
+        small: string
+        large: string
     }
+    followed: boolean
+
+
+    // location?: {
+    //     country: string
+    //     city: string
+    // }
 
 }
 
@@ -36,23 +41,6 @@ type ActionsType = FollowActionType | UnfollowActionType | SetUsersActionType;
 
 let initialState = {
     users: [
-        /*  {
-              id: 1,
-              photoUrl: 'https://e7.pngegg.com/pngimages/565/216/png-clipart-smiley-emoticon-computer-icons-graphics-smiley-miscellaneous-face.png',
-              followed: false,
-              fullName: 'Angelina D.',
-              status: 'Where your desire to be extraordinary?',
-              location: {country: 'Belarus', city: 'Minsk'}
-          },
-          {
-              id: 2,
-              photoUrl: 'https://e7.pngegg.com/pngimages/565/216/png-clipart-smiley-emoticon-computer-icons-graphics-smiley-miscellaneous-face.png',
-              followed: true,
-              fullName: 'Dariya S.',
-              status: 'Easy does it',
-              location: {country: 'Ukraine', city: 'Kiev'}
-          },
-          {id: 3,  photoUrl: 'https://e7.pngegg.com/pngimages/565/216/png-clipart-smiley-emoticon-computer-icons-graphics-smiley-miscellaneous-face.png', followed: false, fullName: 'Davide P.', status: 'Fed II', location: {country: 'Italy', city: 'Naples'}}*/
     ] as Array<UserType>,
 }
 
