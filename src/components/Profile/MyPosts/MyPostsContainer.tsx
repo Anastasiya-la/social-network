@@ -1,4 +1,4 @@
-import {addPostActionCreator, profilePageType, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
