@@ -8,7 +8,7 @@ type ProfileInfoPropsType = {
 }
 
 const ProfileInfo = (props: ProfileInfoPropsType) => {
-    if(!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
     return (
