@@ -10,6 +10,7 @@ import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 
@@ -17,7 +18,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 function App() {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <NavbarContainer/>
             <div className='app-wrapper-content'>
                 <Routes>
